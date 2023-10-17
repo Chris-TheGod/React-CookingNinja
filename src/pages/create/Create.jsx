@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 import "./Create.css";
+import { useNavigate } from "react-router-dom";
 
 export const Create = () => {
   const [title, setTitle] = useState("");
@@ -9,6 +10,7 @@ export const Create = () => {
   const [newIngredient, setNewIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(null);
+  const navigate = useNavigate();
 
   const { postData, data, error } = useFetch(
     "http://localhost:3000/recipes",
@@ -35,6 +37,13 @@ export const Create = () => {
     setNewIngredient("");
     ingredientInput.current.focus();
   };
+
+  //redirect uset when we get data res
+  useEffect(() => {
+    if (data) {
+      navigate("/");
+    }
+  }, [data]);
 
   return (
     <div className="create">
