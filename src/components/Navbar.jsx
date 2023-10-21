@@ -10,7 +10,7 @@ export const Navbar = () => {
 
   return (
     <div className="navbar" style={{ background: color }}>
-      <nav onClick={() => changeColor("pink")}>
+      <nav>
         <Link to="/" className="brand">
           <h1>Cooking ninja</h1>
         </Link>
