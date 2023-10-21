@@ -3,9 +3,10 @@ import "./Navbar.css";
 import { Searchbar } from "./Searchbar";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { useTheme } from "../hooks/useTheme";
 
 export const Navbar = () => {
-  const { color } = useContext(ThemeContext);
+  const { color } = useTheme();
 
   return (
     <div className="navbar" style={{ background: color }}>
